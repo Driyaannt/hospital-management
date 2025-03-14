@@ -44,33 +44,32 @@
                     <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                     <span class="hide-menu">Apps</span>
                 </li>
-                <li class="sidebar-item {{ request()->is('buat-rekam-medis*') ? 'active' : '' }}">
-                    <a class="sidebar-link" href="{{ route('v-create-rm') }}" aria-expanded="false">
+                <li class="sidebar-item {{ request()->is('v-history-rm*') ? 'active' : '' }}">
+                    <a class="sidebar-link" href="{{ route('v-history-rm') }}" aria-expanded="false">
                         <span>
                             <i class="ti ti-clipboard-plus"></i>
                         </span>
-                        <span class="hide-menu">Buat Rekam Medis</span>
+                        <span class="hide-menu">Rekam Medis</span>
                     </a>
                 </li>
 
 
                 <!-- ============================= -->
                 <!-- Master Data -->
-                <!-- ============================= -->
-                <li class="nav-small-cap">
-                    <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                    <span class="hide-menu">Master Data</span>
-                </li>
-
-                <li class="sidebar-item">
-                    <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
-                        <span class="d-flex">
-                            <i class="ti ti-database"></i>
-                        </span>
+                @if (auth()->user()->role === 'admin')
+                    <!-- ============================= -->
+                    <li class="nav-small-cap">
+                        <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                         <span class="hide-menu">Master Data</span>
-                    </a>
-                    <ul aria-expanded="false" class="collapse first-level">
-                        @if (auth()->user()->role === 'admin')
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
+                            <span class="d-flex">
+                                <i class="ti ti-database"></i>
+                            </span>
+                            <span class="hide-menu">Master Data</span>
+                        </a>
+                        <ul aria-expanded="false" class="collapse first-level">
                             <li class="sidebar-item {{ request()->is('v-data-user*') ? 'active' : '' }}">
                                 <a class="sidebar-link" href="{{ route('v-data-user') }}">
                                     <div class="round-16 d-flex align-items-center justify-content-center">
@@ -79,8 +78,7 @@
                                     <span class="hide-menu">Data User</span>
                                 </a>
                             </li>
-                        @endif
-                        @if (auth()->user()->role === 'admin')
+
                             <li class="sidebar-item {{ request()->is('v-data-patients*') ? 'active' : '' }}">
                                 <a class="sidebar-link" href="{{ route('v-data-patients') }}">
                                     <div class="round-16 d-flex align-items-center justify-content-center">
@@ -89,18 +87,15 @@
                                     <span class="hide-menu">Data Pasien</span>
                                 </a>
                             </li>
-                        @endif
-                        @if (auth()->user()->role === 'admin')
-                        <li class="sidebar-item {{ request()->is('v-data-bed*') ? 'active' : '' }}">
-                            <a class="sidebar-link" href="{{ route('v-data-bed') }}">
-                                <div class="round-16 d-flex align-items-center justify-content-center">
-                                    <i class="ti ti-circle"></i>
-                                </div>
-                                <span class="hide-menu">Data Bed</span>
-                            </a>
-                        </li>
-                    @endif
-                        {{-- <li class="sidebar-item">
+                            <li class="sidebar-item {{ request()->is('v-data-bed*') ? 'active' : '' }}">
+                                <a class="sidebar-link" href="{{ route('v-data-bed') }}">
+                                    <div class="round-16 d-flex align-items-center justify-content-center">
+                                        <i class="ti ti-circle"></i>
+                                    </div>
+                                    <span class="hide-menu">Data Bed</span>
+                                </a>
+                            </li>
+                            {{-- <li class="sidebar-item">
                             <a href="pages-gallery.html" class="sidebar-link">
                                 <div class="round-16 d-flex align-items-center justify-content-center">
                                     <i class="ti ti-circle"></i>
@@ -132,8 +127,9 @@
                                 <span class="hide-menu">Session Timeout</span>
                             </a>
                         </li> --}}
-                    </ul>
-                </li>
+                        </ul>
+                    </li>
+                @endif
         </nav>
         <div class="fixed-profile p-3 bg-light-secondary rounded sidebar-ad mt-3">
             <div class="hstack gap-3">

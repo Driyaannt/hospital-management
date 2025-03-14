@@ -285,13 +285,14 @@
                                         <select class="form-control" id="kelurahan" name="kelurahan" required>
                                             <option value="">Pilih Kelurahan</option>
                                             @if (isset($patient) && $patient->kelurahan)
-                                                <input type="hidden" id="kelurahan_name" name="kelurahan_name"
-                                                    value="{{ $patient->kelurahan }}">
+
                                                 <option value="{{ $patient->kelurahan }}" selected>
                                                     {{ $patient->kelurahan }}
                                                 </option>
                                             @endif
                                         </select>
+                                        <input type="hidden" id="kelurahan_name" name="kelurahan_name"
+                                        value="{{ $patient->kelurahan ?? '' }}" />
                                     </div>
                                 </div>
                             </div>

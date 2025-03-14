@@ -49,11 +49,11 @@
                                 @foreach ($patients as $patient)
                                 <tr>
                                     <td>
-                                        <a href="{{ route('patient.edit', $patient->id) }}" class="btn btn-warning" onclick="confirmEdit(event)">Edit</a>
+                                        <a href="{{ route('patient.edit', $patient->id) }}" class="btn btn-warning btn-sm" onclick="confirmEdit(event)">Edit</a>
                                         <form action="{{ route('patient.delete', $patient->id) }}" method="POST" style="display: inline;">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger" onclick="confirmDelete(event)">Delete</button>
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="confirmDelete(event)">Delete</button>
                                         </form>
                                     </td>
                                     <td>{{ $patient->medical_record_number }}</td>

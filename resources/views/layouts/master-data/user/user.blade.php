@@ -30,11 +30,11 @@
                                     <td>{{ $data->email }}</td>
                                     <td>{{ $data->role }}</td>
                                     <td>
-                                        <a href="{{ route('user.edit', $data->id) }}" class="btn btn-warning" onclick="confirmEdit(event)">Edit</a>
+                                        <a href="{{ route('user.edit', $data->id) }}" class="btn btn-warning btn-sm" onclick="confirmEdit(event)">Edit</a>
                                         <form action="{{ route('user.delete', $data->id) }}" method="POST" style="display: inline;">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger" onclick="confirmDelete(event)">Delete</button>
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="confirmDelete(event)">Delete</button>
                                         </form>
                                     </td>
                                 </tr>

@@ -54,9 +54,38 @@ Route::middleware('auth')->group(function () {
             Route::delete('/{id}', [BedController::class, 'destroy'])->name('bed.delete');
         });
 
-        Route::get('/create-rm', [RekamMedikController::class, 'index'])->name('v-create-rm');
-        Route::get('/search-patient', [PatientController::class, 'searchPatient']);
+
+        // Route::prefix('rekam-medik')->group(function () {
+        //     Route::get('/history-rm', [RekamMedikController::class, 'index'])->name('v-history-rm');
+        //     Route::get('/create-assesment/{id}', [RekamMedikController::class, 'create'])->name('v-assesment-create');
+        //     Route::get('/edit-assesment/{id}', [RekamMedikController::class, 'create'])->name('v-assesment-edit');
+        //     Route::post('/store-assesment/{id?}', [RekamMedikController::class, 'store'])->name('assesment.store');
+        //     Route::get('/update-assesment/{id}', [RekamMedikController::class, 'update'])->name('assesment.update');
+        //     Route::delete('/{id}', [RekamMedikController::class, 'destroy'])->name('assesment.delete');
+        //     Route::get('/search-patient', [PatientController::class, 'searchPatient']);
+        // });
     });
+
+    // Middleware untuk Admin dan Dokter
+    Route::middleware('role:admin,dokter')->group(function () {
+        Route::prefix('rekam-medik')->group(function () {
+            Route::get('/history-rm', [RekamMedikController::class, 'index'])->name('v-history-rm');
+            // Route::get('/create-assesment', [RekamMedikController::class, 'create'])
+            //     ->name('v-assesment-create');
+            Route::get('/print-barcode', [RekamMedikController::class, 'printBarcode'])->name('print.barcode');
+            Route::get('/create-assesment/{id}', [RekamMedikController::class, 'create'])
+                ->where('id', '[0-9]+') // Hanya menerima angka
+                ->name('v-assesment-create-id');
+            Route::get('/edit-assesment/{id}', [RekamMedikController::class, 'create'])->name('v-assesment-edit');
+            Route::get('/assesment/{id}', [RekamMedikController::class, 'show'])->name('v-assesment-show');
+            Route::post('/store-assesment/{id?}', [RekamMedikController::class, 'store'])->name('assesment.store');
+            Route::put('/update-assesment/{id}', [RekamMedikController::class, 'store'])->name('assesment.update');
+
+            Route::delete('/{id}', [RekamMedikController::class, 'destroy'])->name('assesment.delete');
+            Route::get('/search-patient', [PatientController::class, 'searchPatient']);
+        });
+    });
+
 
     // Route untuk dashboard dokter
     Route::middleware('role:dokter')->group(function () {
