@@ -32,7 +32,8 @@
                             <!-- KTP, SIM, Paspor -->
                             <div class="row mt-3">
                                 <div class="col-md-4">
-                                    <label for="ktp" class="col-form-label">No. KTP</label>
+                                    <label for="ktp" class="col-form-label">No. KTP <span
+                                            style="color: red;">*</span></label>
                                     <div class="col-md-12">
                                         <input class="form-control" type="text" id="ktp" name="ktp"
                                             value="{{ isset($patient) ? $patient->ktp : old('ktp') }}" required />
@@ -57,7 +58,8 @@
                             <!-- Nama Pasien -->
                             <div class="row mt-3">
                                 <div class="col-md-6">
-                                    <label for="name" class="col-form-label">Nama Pasien</label>
+                                    <label for="name" class="col-form-label">Nama Pasien <span
+                                            style="color: red;">*</span></label>
                                     <div class="col-md-12">
                                         <input class="form-control" type="text" id="name" name="name"
                                             value="{{ isset($patient) ? $patient->name : old('name') }}" required />
@@ -68,7 +70,8 @@
                             <!-- Tempat Tanggal Lahir -->
                             <div class="row mt-3">
                                 <div class="col-md-6">
-                                    <label for="place_of_birth" class="col-form-label">Tempat Lahir</label>
+                                    <label for="place_of_birth" class="col-form-label">Tempat Lahir <span
+                                            style="color: red;">*</span></label>
                                     <div class="col-md-12">
                                         <input class="form-control" type="text" id="place_of_birth" name="place_of_birth"
                                             value="{{ isset($patient) ? $patient->place_of_birth : old('place_of_birth') }}"
@@ -76,7 +79,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="date_of_birth" class="col-form-label">Tanggal Lahir</label>
+                                    <label for="date_of_birth" class="col-form-label">Tanggal Lahir <span
+                                            style="color: red;">*</span></label>
                                     <div class="col-md-12">
                                         <input class="form-control" type="date" id="date_of_birth" name="date_of_birth"
                                             value="{{ isset($patient) ? $patient->date_of_birth : old('date_of_birth') }}"
@@ -88,7 +92,7 @@
                             <!-- Jenis Kelamin (Radio Button) -->
                             <div class="row mt-3">
                                 <div class="col-md-6">
-                                    <label class="col-form-label">Jenis Kelamin</label>
+                                    <label class="col-form-label">Jenis Kelamin <span style="color: red;">*</span></label>
                                     <div class="col-md-12">
                                         <div class="d-flex gap-3"> <!-- Menggunakan Flexbox agar sejajar -->
                                             <div class="form-check">
@@ -114,7 +118,7 @@
                             <!-- Status (Radio Button) -->
                             <div class="row mt-3">
                                 <div class="col-md-6">
-                                    <label class="col-form-label">Status</label>
+                                    <label class="col-form-label">Status <span style="color: red;">*</span></label>
                                     <div class="col-md-12">
                                         <div class="d-flex gap-3 flex-wrap"> <!-- Flexbox untuk sejajar dan responsif -->
                                             <div class="form-check">
@@ -154,7 +158,7 @@
                             <!-- Agama (Radio Button) -->
                             <div class="row mt-3">
                                 <div class="col-md-6">
-                                    <label class="col-form-label">Agama</label>
+                                    <label class="col-form-label">Agama <span style="color: red;">*</span></label>
                                     <div class="col-md-12">
                                         <div class="d-flex gap-3 flex-wrap"> <!-- Flexbox untuk sejajar dan responsif -->
                                             <div class="form-check">
@@ -208,7 +212,8 @@
                             <!-- Kebangsaan (API) -->
                             <div class="row mt-3">
                                 <div class="col-md-6">
-                                    <label for="nationality" class="col-form-label">Kebangsaan</label>
+                                    <label for="nationality" class="col-form-label">Kebangsaan <span
+                                            style="color: red;">*</span></label>
                                     <div class="col-md-12">
                                         <select class="form-control" id="nationality" name="nationality" required>
                                             <option value="">Pilih Kebangsaan</option>
@@ -225,7 +230,8 @@
                             <!-- Alamat Lengkap (KTP) -->
                             <div class="row mt-3">
                                 <div class="col-md-6">
-                                    <label for="address_ktp" class="col-form-label">Alamat Lengkap (KTP)</label>
+                                    <label for="address_ktp" class="col-form-label">Alamat Lengkap (KTP) <span
+                                            style="color: red;">*</span></label>
                                     <div class="col-md-12">
                                         <textarea class="form-control" id="address_ktp" name="address_ktp" required>{{ isset($patient) ? $patient->address_ktp : old('address_ktp') }}</textarea>
                                     </div>
@@ -236,7 +242,8 @@
                             <div class="row mt-3">
                                 <!-- Provinsi -->
                                 <div class="col-md-4">
-                                    <label for="provinsi" class="col-form-label">Provinsi</label>
+                                    <label for="provinsi" class="col-form-label">Provinsi <span
+                                            style="color: red;">*</span></label>
                                     <div class="col-md-12">
                                         <select class="form-control" id="provinsi" name="provinsi" required>
                                             <option value="">Pilih Provinsi</option>
@@ -251,7 +258,8 @@
 
                                 <!-- Kabupaten/Kota -->
                                 <div class="col-md-4">
-                                    <label for="kabupaten_kota" class="col-form-label">Kabupaten/Kota</label>
+                                    <label for="kabupaten_kota" class="col-form-label">Kabupaten/Kota <span
+                                            style="color: red;">*</span></label>
                                     <div class="col-md-12">
                                         <select class="form-control" id="kabupaten_kota" name="kabupaten_kota" required>
                                             <option value="">Pilih Kabupaten/Kota</option>
@@ -265,7 +273,8 @@
 
                                 <!-- Kecamatan -->
                                 <div class="col-md-4">
-                                    <label for="kecamatan" class="col-form-label">Kecamatan</label>
+                                    <label for="kecamatan" class="col-form-label">Kecamatan <span
+                                            style="color: red;">*</span></label>
                                     <div class="col-md-12">
                                         <select class="form-control" id="kecamatan" name="kecamatan" required>
                                             <option value="">Pilih Kecamatan</option>
@@ -280,19 +289,19 @@
 
                                 <!-- Kelurahan -->
                                 <div class="col-md-4 mt-3">
-                                    <label for="kelurahan" class="col-form-label">Kelurahan</label>
+                                    <label for="kelurahan" class="col-form-label">Kelurahan <span
+                                            style="color: red;">*</span></label>
                                     <div class="col-md-12">
                                         <select class="form-control" id="kelurahan" name="kelurahan" required>
                                             <option value="">Pilih Kelurahan</option>
                                             @if (isset($patient) && $patient->kelurahan)
-
                                                 <option value="{{ $patient->kelurahan }}" selected>
                                                     {{ $patient->kelurahan }}
                                                 </option>
                                             @endif
                                         </select>
                                         <input type="hidden" id="kelurahan_name" name="kelurahan_name"
-                                        value="{{ $patient->kelurahan ?? '' }}" />
+                                            value="{{ $patient->kelurahan ?? '' }}" />
                                     </div>
                                 </div>
                             </div>
@@ -301,8 +310,19 @@
 
                             <!-- Nama Asuransi (Selection) -->
                             <div class="row mt-3">
+                                {{-- tambahkan no asuransi --}}
                                 <div class="col-md-6">
-                                    <label for="insurance" class="col-form-label">Nama Asuransi</label>
+                                    <label for="insurance_number" class="col-form-label">No. Asuransi <span
+                                        style="color: red;">*</span> </label>
+                                    <div class="col-md-12">
+                                        <input class="form-control" type="text" id="insurance_number"
+                                            name="insurance_number"
+                                            value="{{ isset($patient) ? $patient->insurance_number : old('insurance_number') }}" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="insurance" class="col-form-label">Nama Asuransi <span
+                                            style="color: red;">*</span></label>
                                     <div class="col-md-12">
                                         <select class="form-control" id="insurance" name="insurance" required>
                                             <option value="BPJS"
@@ -314,6 +334,9 @@
                                             <option value="AIA"
                                                 {{ isset($patient) && $patient->insurance == 'AIA' ? 'selected' : '' }}>
                                                 AIA</option>
+                                            <option value="Umum"
+                                                {{ isset($patient) && $patient->insurance == 'Umum' ? 'selected' : '' }}>
+                                                Umum</option>
                                             <option value="Other"
                                                 {{ isset($patient) && $patient->insurance == 'Other' ? 'selected' : '' }}>
                                                 Lainnya</option>
@@ -355,7 +378,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <label for="mobile_phone" class="col-form-label">Mobile Phone</label>
+                                    <label for="mobile_phone" class="col-form-label">Mobile Phone <span
+                                            style="color: red;">*</span></label>
                                     <div class="col-md-12">
                                         <input class="form-control" type="text" id="mobile_phone" name="mobile_phone"
                                             value="{{ isset($patient) ? $patient->mobile_phone : old('mobile_phone') }}"
@@ -374,7 +398,8 @@
                             <!-- Kontak Darurat -->
                             <div class="row mt-3">
                                 <div class="col-md-6">
-                                    <label for="emergency_contact_name" class="col-form-label">Nama Kontak Darurat</label>
+                                    <label for="emergency_contact_name" class="col-form-label">Nama Kontak Darurat <span
+                                            style="color: red;">*</span></label>
                                     <div class="col-md-12">
                                         <input class="form-control" type="text" id="emergency_contact_name"
                                             name="emergency_contact_name"
@@ -383,7 +408,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="emergency_contact_relationship" class="col-form-label">Hubungan</label>
+                                    <label for="emergency_contact_relationship" class="col-form-label">Hubungan <span
+                                            style="color: red;">*</span></label>
                                     <div class="col-md-12">
                                         <input class="form-control" type="text" id="emergency_contact_relationship"
                                             name="emergency_contact_relationship"
@@ -392,13 +418,15 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="emergency_contact_address" class="col-form-label">Alamat Lengkap</label>
+                                    <label for="emergency_contact_address" class="col-form-label">Alamat Lengkap <span
+                                            style="color: red;">*</span></label>
                                     <div class="col-md-12">
                                         <textarea class="form-control" id="emergency_contact_address" name="emergency_contact_address" required>{{ isset($patient) ? $patient->emergency_contact_address : old('emergency_contact_address') }}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="emergency_contact_phone" class="col-form-label">Nomor Telepon</label>
+                                    <label for="emergency_contact_phone" class="col-form-label">Nomor Telepon <span
+                                            style="color: red;">*</span></label>
                                     <div class="col-md-12">
                                         <input class="form-control" type="text" id="emergency_contact_phone"
                                             name="emergency_contact_phone"
@@ -411,7 +439,8 @@
                             <!-- Awal Masuk (Selection) -->
                             <div class="row mt-3">
                                 <div class="col-md-6">
-                                    <label for="entry_type" class="col-form-label">Awal Masuk</label>
+                                    <label for="entry_type" class="col-form-label">Awal Masuk <span
+                                            style="color: red;">*</span></label>
                                     <div class="col-md-12">
                                         <select class="form-control" id="entry_type" name="entry_type" required>
                                             <option value="IGD"

@@ -17,7 +17,6 @@ return new class extends Migration
             $table->String('pendidikan')->nullable();
             $table->String('pekerjaan')->nullable();
             $table->String('status_perkawinan')->nullable();
-            $table->enum('kasus_polisi', ['Tidak', 'Ya'])->nullable();
             $table->String('cara_datang')->nullable();
             $table->String('komunikasi')->nullable();
             $table->String('transportasi')->nullable();
@@ -39,16 +38,16 @@ return new class extends Migration
             $table->enum('skala_triase', ['ATS 1', 'ATS 2', 'ATS 3', 'ATS 4', 'ATS 5'])->nullable();
             $table->time('jam_keluar_triase')->nullable();
             $table->text('riwayat_penyakit_sekarang')->nullable();
-            $table->text('riwayat_penyakit_dahulu')->nullable();
+            $table->text('riwayat_penyakit')->nullable();
             $table->text('akral')->nullable();
             $table->text('riwayat_pengobatan')->nullable();
             $table->string('gcs_e')->nullable();
-            $table->string('pupil')->nullable();
             $table->string('pernafasan')->nullable();
             $table->string('refleks_cahaya')->nullable();
             $table->integer('spo2')->nullable();
             $table->String('riwayat_alergi')->nullable();
             $table->text('keluhan_utama')->nullable();
+            $table->text('keterangan_terakhir')->nullable();
             $table->enum('status', ['Proses', 'Selesai'])->default('Proses');
             $table->string('verifikator')->nullable();
             $table->timestamps();

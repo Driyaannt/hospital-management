@@ -30,6 +30,7 @@ class PatientsModel extends Model
         'kecamatan',
         'kabupaten_kota',
         'provinsi',
+        'insurance_number',
         'insurance',
         'address_domisili',
         'phone_home',

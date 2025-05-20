@@ -11,7 +11,7 @@
                             <h5 class="fw-semibold mb-3 fs-5">Welcome back {{ Auth::user()->name }}</h5>
                             @if (Auth::user()->role == 'admin')
                                 <p class="mb-3">
-                                    Cari data pasien berdasarkan NIK atau Nama.
+                                    Cari data pasien berdasarkan NIK / Nama / No RM/ No Asuransi.
                                 </p>
 
                                 <!-- Form Pencarian -->
@@ -52,6 +52,7 @@
                                 <tr>
                                     <th>Aksi</th>
                                     <th>Status</th>
+                                    <th>Keterangan Terakhir</th>
                                     @if (Auth::user()->role == 'admin')
                                         <th>Label Pasien</th>
                                     @endif
@@ -83,6 +84,13 @@
                                                 <span class="badge bg-warning text-dark">Proses</span>
                                             @elseif ($data->status === 'Selesai')
                                                 <span class="badge bg-success">Selesai</span>
+                                            @else
+                                                <span class="badge bg-secondary">Tidak Diketahui</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($data->keterangan_terakhir)
+                                                <span class="badge bg-primary">{{ $data->keterangan_terakhir }}</span>
                                             @else
                                                 <span class="badge bg-secondary">Tidak Diketahui</span>
                                             @endif
@@ -141,7 +149,7 @@
 
                 if (!keyword.trim()) {
                     resultDiv.innerHTML =
-                        `<div class="alert alert-warning">Masukkan NIK atau Nama pasien.</div>`;
+                        `<div class="alert alert-warning">Masukkan NIK / Nama / No RM / No Asuransi.</div>`;
                     return;
                 }
 
@@ -175,7 +183,7 @@
                                 </div>
                                 <a href="${assesmentUrl}" class="btn btn-success btn-sm">
                                     Tambah Data
-                                </a> 
+                                </a>
                             </li>`;
                             });
                             patientList += '</ul>';
@@ -255,10 +263,6 @@
                             <tr>
                                 <th>Suku</th>
                                 <td>${response.suku}</td>
-                            </tr>
-                            t<tr>
-                                <th>Kasus Polisi</th>
-                                <td>${response.kasus_polisi}</td>
                             </tr>
                             <tr>
                                 <th>Status Perkawinan</th>
@@ -366,10 +370,6 @@
                                 <td>${response.gcs_e}</td>
                             </tr>
                             <tr>
-                                <th>Pupil</th>
-                                <td>${response.pupil}</td>
-                            </tr>
-                            <tr>
                                 <th>Reflek Cahaya</th>
                                 <td>${response.refleks_cahaya}</td>
                             </tr>
@@ -383,6 +383,10 @@
                             </tr>
                                 <th>Keluhan Utama</th>
                                 <td>${response.main_complaint}</td>
+                            </tr>
+                            <tr>
+                                <th>Riwayat Penyakit Keluarga</th>
+                                <td>${response.keterangan_terakhir}</td>
                             </tr>
                             <tr>
                                 <th>Dokter</th>

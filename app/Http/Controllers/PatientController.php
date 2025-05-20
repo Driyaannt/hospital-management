@@ -121,6 +121,7 @@ class PatientController extends Controller
             'kabupaten_kota' => 'required',
             'provinsi' => 'required',
             'insurance' => 'required',
+            'insurance_number' => 'required',
             'mobile_phone' => 'required',
             'emergency_contact_name' => 'required',
             'emergency_contact_relationship' => 'required',
@@ -181,6 +182,7 @@ class PatientController extends Controller
             'kecamatan' => 'required',
             'kabupaten_kota' => 'required',
             'provinsi' => 'required',
+            'insurance_number' => 'required',
             'insurance' => 'required',
             'mobile_phone' => 'required',
             'emergency_contact_name' => 'required',
@@ -219,6 +221,8 @@ class PatientController extends Controller
 
         $patients = PatientsModel::where('ktp', 'LIKE', "%$keyword%")
             ->orWhere('name', 'LIKE', "%$keyword%")
+            ->orWhere('medical_record_number', 'LIKE', "%$keyword%")
+            ->orWhere('insurance_number', 'LIKE', "%$keyword%")
             ->get();
 
         return response()->json($patients);

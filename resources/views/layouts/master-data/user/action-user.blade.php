@@ -16,7 +16,7 @@
                   <div class="row">
                     <!-- Kolom untuk data user -->
                     <div class="col-md-6">
-                      <label for="name" class="col-form-label">Nama</label>
+                      <label for="name" class="col-form-label">Nama <span style="color: red;">*</span></label>
                       <div class="col-md-12">
                         <input class="form-control @error('name') is-invalid @enderror" type="text" id="name" name="name" value="{{ isset($user) ? $user->name : old('name') }}" required />
                         @error('name')
@@ -25,7 +25,7 @@
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <label for="username" class="col-form-label">Username</label>
+                      <label for="username" class="col-form-label">Username <span style="color: red;">*</span></label>
                       <div class="col-md-12">
                         <input class="form-control @error('username') is-invalid @enderror" type="text" id="username" name="username" value="{{ isset($user) ? $user->username : old('username') }}" required />
                         @error('username')
@@ -34,7 +34,7 @@
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <label for="email" class="col-form-label">Email</label>
+                      <label for="email" class="col-form-label">Email <span style="color: red;">*</span></label>
                       <div class="col-md-12">
                         <input class="form-control @error('email') is-invalid @enderror" type="email" id="email" name="email" value="{{ isset($user) ? $user->email : old('email') }}" required />
                         @error('email')
@@ -43,7 +43,7 @@
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <label for="password" class="col-form-label">Password</label>
+                      <label for="password" class="col-form-label">Password <span style="color: red;">*</span></label>
                       <div class="col-md-12">
                         <input class="form-control @error('password') is-invalid @enderror" type="password" id="password" name="password" />
                         <small class="text-muted">Kosongkan jika tidak ingin mengubah password.</small>
@@ -53,7 +53,7 @@
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <label for="role" class="col-form-label">Role</label>
+                      <label for="role" class="col-form-label">Role <span style="color: red;">*</span></label>
                       <div class="col-md-12">
                         <select class="form-control @error('role') is-invalid @enderror" id="role" name="role" required>
                           <option value="admin" {{ (isset($user) && $user->role == 'admin') ? 'selected' : '' }}>Admin</option>

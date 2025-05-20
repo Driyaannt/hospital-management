@@ -15,7 +15,7 @@
                   <div class="row">
                     <!-- Kategori Bed -->
                     <div class="col-md-6">
-                        <label for="category" class="col-form-label">Kategori Bed</label>
+                        <label for="category" class="col-form-label">Kategori Bed <span style="color: red;">*</span></label>
                         <div class="col-md-12">
                             <select class="form-control @error('category') is-invalid @enderror" id="category" name="category" required>
                                 <option value="">-- Pilih Kategori --</option>
@@ -32,7 +32,7 @@
 
                     <!-- Nomor Bed -->
                     <div class="col-md-6">
-                      <label for="bed_number" class="col-form-label">Nomor Bed</label>
+                      <label for="bed_number" class="col-form-label">Nomor Bed <span style="color: red;">*</span></label>
                       <div class="col-md-12">
                         <input class="form-control @error('bed_number') is-invalid @enderror" type="text" id="bed_number" name="bed_number" value="{{ isset($bed) ? $bed->bed_number : old('bed_number') }}" required />
                         @error('bed_number')
@@ -43,7 +43,7 @@
 
                     <!-- Status -->
                     <div class="col-md-6">
-                      <label for="status" class="col-form-label">Status</label>
+                      <label for="status" class="col-form-label">Status <span style="color: red;">*</span></label>
                       <div class="col-md-12">
                         <select class="form-control @error('status') is-invalid @enderror" id="status" name="status" required>
                           <option value="Available" {{ (isset($bed) && $bed->status == 'Available') ? 'selected' : '' }}>Tersedia</option>

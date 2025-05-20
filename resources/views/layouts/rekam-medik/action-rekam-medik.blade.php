@@ -76,22 +76,6 @@
                                         value="{{ old('suku', $assesment['suku'] ?? '') }}"
                                         {{ $isDoctor ? 'disabled' : '' }} />
                                 </div>
-                                <div class="col-md-6">
-                                    <label for="kasus_polisi" class="col-form-label">Kasus Polisi</label>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="kasus_polisi" value="Ya"
-                                            id="kasus_polisi_ya" {{ $isDoctor ? 'disabled' : '' }}
-                                            {{ old('kasus_polisi', $assesment['kasus_polisi'] ?? '') == 'Ya' ? 'checked' : '' }} />
-                                        <label class="form-check-label" for="kasus_polisi_ya">Ya</label>
-                                    </div>
-
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="kasus_polisi" value="Tidak"
-                                            id="kasus_polisi_tidak" {{ $isDoctor ? 'disabled' : '' }}
-                                            {{ old('kasus_polisi', $assesment['kasus_polisi'] ?? '') == 'Tidak' ? 'checked' : '' }} />
-                                        <label class="form-check-label" for="kasus_polisi_tidak">Tidak</label>
-                                    </div>
-                                </div>
 
                                 <div class="col-md-6">
                                     <label for="status_perkawinan" class="col-form-label">Status Perkawinan</label>
@@ -164,8 +148,8 @@
                                 <div class="col-md-6">
                                     <label for="main_complaint" class="col-form-label">Nama Dokter</label>
                                     @if (Auth::user()->role == 'dokter')
-                                        <input class="form-control" type="text" name="verifikator" value="{{ Auth::user()->name }}"
-                                            disabled />
+                                        <input class="form-control" type="text" name="verifikator"
+                                            value="{{ Auth::user()->name }}" disabled />
                                     @endif
                                 </div>
                                 <div class="col-md-6">
@@ -351,12 +335,13 @@
 
                             <div class="row mt-3">
                                 <div class="col-md-6">
-                                    <label for="riwayat_penyakit_sekarang" class="col-form-label">Riwayat Penyakit Sekarang</label>
+                                    <label for="riwayat_penyakit_sekarang" class="col-form-label">Riwayat Penyakit
+                                        Sekarang</label>
                                     <textarea class="form-control" name="riwayat_penyakit_sekarang">{{ old('riwayat_penyakit_sekarang', isset($assesment) ? $assesment['riwayat_penyakit_sekarang'] : '') }}</textarea>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="riwayat_penyakit_dahulu" class="col-form-label">Riwayat Penyakit Dulu</label>
-                                    <textarea class="form-control" name="riwayat_penyakit_dahulu">{{ old('riwayat_penyakit_dahulu', isset($assesment) ? $assesment['riwayat_penyakit_dahulu'] : '') }}</textarea>
+                                    <label for="riwayat_penyakit" class="col-form-label">Riwayat Penyakit</label>
+                                    <textarea class="form-control" name="riwayat_penyakit">{{ old('riwayat_penyakit', isset($assesment) ? $assesment['riwayat_penyakit'] : '') }}</textarea>
                                 </div>
                             </div>
 
@@ -382,29 +367,21 @@
                                         placeholder="Masukkan nilai GCS">
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="pupil" class="col-form-label">Pupil</label>
-                                    <input type="text" class="form-control" name="pupil" id="pupil"
-                                        value="{{ old('pupil', $assesment['pupil'] ?? '') }}"
-                                        placeholder="Masukkan kondisi pupil">
-                                </div>
-                            </div>
-
-                            <div class="row mt-3">
-                                <div class="col-md-6">
                                     <label for="refleks_cahaya" class="col-form-label">Reflek Cahaya</label>
                                     <input type="text" class="form-control" name="refleks_cahaya" id="refleks_cahaya"
                                         value="{{ old('refleks_cahaya', $assesment['refleks_cahaya'] ?? '') }}"
                                         placeholder="Masukkan kondisi reflek cahaya">
                                 </div>
+                            </div>
+
+                            <div class="row mt-3">
+
                                 <div class="col-md-6">
                                     <label for="pernafasan" class="col-form-label">Pernafasan</label>
                                     <input type="text" class="form-control" name="pernafasan" id="pernafasan"
                                         value="{{ old('pernafasan', $assesment['pernafasan'] ?? '') }}"
                                         placeholder="Masukkan kondisi pernafasan">
                                 </div>
-                            </div>
-
-                            <div class="row mt-3">
                                 <div class="col-md-6">
                                     <label for="spo2" class="col-form-label">SpO2</label>
                                     <input type="number" class="form-control" name="spo2" id="spo2"
@@ -419,6 +396,24 @@
                                     <label for="main_complaint" class="col-form-label">Keluhan Utama</label>
                                     <textarea class="form-control" name="main_complaint">{{ old('main_complaint', isset($assesment) ? $assesment['main_complaint'] : '') }}</textarea>
                                 </div>
+                                <div class="col-md-6">
+                                    <label for="keterangan_terakhir" class="col-form-label">Keterangan Terakhir</label>
+                                    <select class="form-control" name="keterangan_terakhir" id="keterangan_terakhir">
+                                        <option value="" disabled selected>Pilih Keterangan Terakhir</option>
+                                        <option value="IGD - Pulang"
+                                            {{ old('keterangan_terakhir', $assesment['keterangan_terakhir'] ?? '') == 'IGD - Pulang' ? 'selected' : '' }}>
+                                            IGD - Pulang</option>
+                                        <option value="IGD - Rawat Inap"
+                                            {{ old('keterangan_terakhir', $assesment['keterangan_terakhir'] ?? '') == 'IGD - Rawat Inap' ? 'selected' : '' }}>
+                                            IGD - Rawat Inap</option>
+                                        <option value="IGD - Rujuk"
+                                            {{ old('keterangan_terakhir', $assesment['keterangan_terakhir'] ?? '') == 'IGD - Rujuk' ? 'selected' : '' }}>
+                                            IGD - Rujuk</option>
+                                        <option value="IGD - Meninggal"
+                                            {{ old('keterangan_terakhir', $assesment['keterangan_terakhir'] ?? '') == 'IGD - Meninggal' ? 'selected' : '' }}>
+                                            IGD - Meninggal</option>
+                                    </select>
+
                             </div>
                         @endif
                         <div class="row mt-3">

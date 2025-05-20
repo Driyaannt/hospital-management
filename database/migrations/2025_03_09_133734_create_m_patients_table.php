@@ -28,6 +28,7 @@ return new class extends Migration {
             $table->string('kecamatan')->nullable();
             $table->string('kabupaten_kota')->nullable();
             $table->string('provinsi')->nullable();
+            $table->string('insurance_number')->nullable();
             $table->string('insurance')->nullable();
             $table->text('address_domisili')->nullable();
             $table->string('phone_home')->nullable();

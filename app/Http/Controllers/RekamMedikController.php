@@ -122,7 +122,6 @@ class RekamMedikController extends Controller
             'provinsi' => $assesment_show->patient->provinsi,
             'religion' => $assesment_show->patient->religion,
             'suku' => $assesment_show->suku,
-            'kasus_polisi' => $assesment_show->kasus_polisi,
             'status_perkawinan' => $assesment_show->status_perkawinan,
             'insurance' => $assesment_show->patient->insurance,
             'pendidikan' => $assesment_show->pendidikan,
@@ -130,7 +129,6 @@ class RekamMedikController extends Controller
             'cara_datang' => $assesment_show->cara_datang,
             'komunikasi' => $assesment_show->komunikasi,
             'transportasi' => $assesment_show->transportasi,
-
             'trauma' => $assesment_show->trauma,
             'verifikator' => $assesment_show->verifikator,
             'tanggal' => $assesment_show->tanggal,
@@ -150,7 +148,6 @@ class RekamMedikController extends Controller
             'riwayat_pengobatan' => $assesment_show->riwayat_pengobatan,
             'riwayat_alergi' => $assesment_show->riwayat_alergi,
             'gcs_e' => $assesment_show->gcs_e,
-            'pupil' => $assesment_show->pupil,
             'pernafasan' => $assesment_show->pernafasan,
             'refleks_cahaya' => $assesment_show->refleks_cahaya,
             'spo2' => $assesment_show->spo2,
