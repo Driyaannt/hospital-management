@@ -27,14 +27,14 @@
                     </a>
                 </li>
 
-                <li class="sidebar-item {{ request()->is('dashboard*') ? 'active' : '' }}">
+                {{-- <li class="sidebar-item {{ request()->is('dashboard*') ? 'active' : '' }}">
                     <a class="sidebar-link" href="{{ route('dashboard') }}" aria-expanded="false">
                         <span>
                             <i class="ti ti-calendar-event"></i>
                         </span>
                         <span class="hide-menu">Jadwal Dokter</span>
                     </a>
-                </li>
+                </li> --}}
 
 
                 <!-- ============================= -->
@@ -87,14 +87,14 @@
                                     <span class="hide-menu">Data Pasien</span>
                                 </a>
                             </li>
-                            <li class="sidebar-item {{ request()->is('v-data-bed*') ? 'active' : '' }}">
+                            {{-- <li class="sidebar-item {{ request()->is('v-data-bed*') ? 'active' : '' }}">
                                 <a class="sidebar-link" href="{{ route('v-data-bed') }}">
                                     <div class="round-16 d-flex align-items-center justify-content-center">
                                         <i class="ti ti-circle"></i>
                                     </div>
                                     <span class="hide-menu">Data Bed</span>
                                 </a>
-                            </li>
+                            </li> --}}
                             {{-- <li class="sidebar-item">
                             <a href="pages-gallery.html" class="sidebar-link">
                                 <div class="round-16 d-flex align-items-center justify-content-center">
@@ -130,8 +130,26 @@
                         </ul>
                     </li>
                 @endif
+                <!-- Judul/Label Logout -->
+                <li class="nav-small-cap">
+                    <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                    <span class="hide-menu">Logout</span>
+                </li>
+
+                <!-- Tombol Logout -->
+                <li class="sidebar-item">
+                    <form action="{{ route('logout') }}" method="POST" id="logoutForm">
+                        @csrf
+                        <a href="#" class="sidebar-link" onclick="confirmLogout(event)">
+                            <i class="ti ti-logout"></i>
+                            <span class="hide-menu">Log Out</span>
+                        </a>
+                    </form>
+                </li>
+
+
         </nav>
-        <div class="fixed-profile p-3 bg-light-secondary rounded sidebar-ad mt-3">
+        {{-- <div class="fixed-profile p-3 bg-light-secondary rounded sidebar-ad mt-3">
             <div class="hstack gap-3">
                 <div class="john-img">
                     <img src="../../dist/images/profile/user-1.jpg" class="rounded-circle" width="40" height="40"
@@ -146,7 +164,7 @@
                     <i class="ti ti-power fs-6"></i>
                 </button>
             </div>
-        </div>
+        </div> --}}
         <!-- End Sidebar navigation -->
     </div>
     <!-- End Sidebar scroll-->

@@ -66,7 +66,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="message-body">
+                                {{-- <div class="message-body">
                                     <a href="{{route('v-my-profile')}}" class="py-8 px-7 mt-8 d-flex align-items-center">
                                         <span
                                             class="d-flex align-items-center justify-content-center bg-light rounded-1 p-6">
@@ -100,7 +100,7 @@
                                             <span class="d-block text-dark">To-do and Daily Tasks</span>
                                         </div>
                                     </a>
-                                </div>
+                                </div> --}}
                                 <div class="d-grid py-4 px-7 pt-8">
                                     <form action="{{ route('logout') }}" method="POST" id="logoutForm">
                                         @csrf <!-- CSRF token untuk keamanan -->

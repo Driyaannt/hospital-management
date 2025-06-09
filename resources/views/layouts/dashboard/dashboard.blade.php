@@ -1,18 +1,39 @@
 @extends('app')
 
 @section('content')
-    <div class="row">
+    <style>
+        .row.equal-height {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .row.equal-height>[class*="col-"] {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .row.equal-height .card {
+            flex: 1 1 auto;
+        }
+
+        .card-body {
+            max-height: 600px;
+            overflow-y: auto;
+        }
+    </style>
+    <div class="row equal-height">
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex align-items-start">
-                        <div>
-                            <h4 class="card-title">Total User</h4>
-                            <h6 class="card-subtitle">{{$totalCount}}</h6>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h4 class="card-title mb-0">Total Patients : {{ $totalPatients }}</h4>
                         </div>
+
                         <div class="ms-auto">
                             <div class="dropdown">
-                                <a href="#" class="link" id="new" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a href="#" class="link" id="new" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
                                     <i data-feather="more-horizontal" class="feather-sm"></i>
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="new">
@@ -37,8 +58,8 @@
                                 </div>
                                 <div class="col-9 d-flex align-items-center">
                                     <div>
-                                        <h5 class="card-title mb-1">Admin</h5>
-                                        <p class="text-muted mb-0">Jumlah Admin: {{ $adminCount }}</p>
+                                        <h5 class="card-title mb-1">Pasien Pulang</h5>
+                                        <p class="text-muted mb-0">Jumlah Pulang: {{ $totalIgdPulang }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -50,8 +71,8 @@
                                 </div>
                                 <div class="col-9 d-flex align-items-center">
                                     <div>
-                                        <h5 class="card-title mb-1">Apoteker</h5>
-                                        <p class="text-muted mb-0">Jumlah Apoteker: {{ $apotekerCount }}</p>
+                                        <h5 class="card-title mb-1">Pasien Inap</h5>
+                                        <p class="text-muted mb-0">Jumlah Inap: {{ $totalIgdRawat }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -67,8 +88,8 @@
                                 </div>
                                 <div class="col-9 d-flex align-items-center">
                                     <div>
-                                        <h5 class="card-title mb-1">Dokter</h5>
-                                        <p class="text-muted mb-0">Jumlah Dokter: {{ $dokterCount }}</p>
+                                        <h5 class="card-title mb-1">Pasien Rujuk</h5>
+                                        <p class="text-muted mb-0">Jumlah Rujuk: {{ $totalIgdRujuk }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -80,8 +101,8 @@
                                 </div>
                                 <div class="col-9 d-flex align-items-center">
                                     <div>
-                                        <h5 class="card-title mb-1">Perawat</h5>
-                                        <p class="text-muted mb-0">Jumlah Perawat: {{ $perawatCount }}</p>
+                                        <h5 class="card-title mb-1">Pasien Meninggal</h5>
+                                        <p class="text-muted mb-0">Jumlah Meninggal: {{ $totalIgdMeninggal }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -95,12 +116,13 @@
                 <div class="card-body">
                     <div class="d-flex align-items-start">
                         <div>
-                            <h4 class="card-title">Total User</h4>
-                            <h6 class="card-subtitle">{{ $totalCount }}</h6>
+                            <h4 class="card-title mb-0">Total User : {{ $totalCount }}</h4>
+
                         </div>
                         <div class="ms-auto">
                             <div class="dropdown">
-                                <a href="#" class="link" id="new" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a href="#" class="link" id="new" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
                                     <i data-feather="more-horizontal" class="feather-sm"></i>
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="new">
@@ -189,63 +211,92 @@
             "use strict";
 
             // Ambil data dari controller
-            var dataAdmin = @json($adminCount); // Data admin
-            var dataApoteker = @json($apotekerCount); // Data apoteker
-            var dataDokter = @json($dokterCount); // Data dokter
-            var dataPerawat = @json($perawatCount); // Data perawat
+            var igdPulang = @json($totalIgdPulang);
+            var igdRawatInap = @json($totalIgdRawat);
+            var igdRujuk = @json($totalIgdRujuk);
+            var igdMeninggal = @json($totalIgdMeninggal);
 
             // Konfigurasi chart
             var options = {
                 series: [{
-                    name: "Admin",
-                    data: [dataAdmin],
-                }, {
-                    name: "Apoteker",
-                    data: [dataApoteker],
-                }, {
-                    name: "Dokter",
-                    data: [dataDokter],
-                }, {
-                    name: "Perawat",
-                    data: [dataPerawat],
+                    name: 'Jumlah',
+                    data: [igdPulang, igdRawatInap, igdRujuk, igdMeninggal]
                 }],
                 chart: {
-                    type: "bar",
-                    height: 350,
-                    stacked: true,
-                    fontFamily: '"Nunito Sans",sans-serif',
+                    type: 'bar',
+                    height: 400,
                     toolbar: {
-                        show: false,
+                        show: false
+                    },
+                    fontFamily: 'Nunito, sans-serif'
+                },
+                plotOptions: {
+                    bar: {
+                        horizontal: false,
+                        columnWidth: '40%',
+                        borderRadius: 6,
+                        distributed: true // untuk warna berbeda tiap bar
                     },
                 },
-                colors: ["#3699ff", "#ff6384", "#4bc0c0", "#ffcd56"],
                 dataLabels: {
-                    enabled: false,
+                    enabled: true,
+                    style: {
+                        fontSize: '14px',
+                        fontWeight: 'bold',
+                        colors: ["#000"]
+                    }
                 },
                 stroke: {
-                    curve: "smooth",
+                    show: true,
                     width: 2,
-                },
-                fill: {
-                    type: "solid",
-                    opacity: 0.2,
-                },
-                grid: {
-                    show: false,
+                    colors: ['transparent']
                 },
                 xaxis: {
-                    categories: ["Jumlah"],
+                    categories: ['IGD - Pulang', 'IGD - Rawat Inap', 'IGD - Rujuk', 'IGD - Meninggal'],
+                    labels: {
+                        style: {
+                            fontSize: '13px'
+                        }
+                    }
                 },
                 yaxis: {
-                    show: false,
+                    title: {
+                        text: 'Jumlah Pasien'
+                    },
+                    labels: {
+                        style: {
+                            fontSize: '13px'
+                        }
+                    }
                 },
+                fill: {
+                    opacity: 1
+                },
+                colors: ["#3699ff", "#ff6384", "#4bc0c0", "#ffcd56"],
                 tooltip: {
                     theme: "dark",
+                    y: {
+                        formatter: function(val) {
+                            return val + " orang";
+                        }
+                    }
                 },
                 legend: {
-                    position: "top",
-                    horizontalAlign: "left",
+                    show: false
                 },
+                responsive: [{
+                    breakpoint: 768,
+                    options: {
+                        chart: {
+                            height: 300
+                        },
+                        plotOptions: {
+                            bar: {
+                                columnWidth: '60%'
+                            }
+                        }
+                    }
+                }]
             };
 
             // Render chart
@@ -253,6 +304,8 @@
             chart.render();
         });
     </script>
+
+
     <script>
         $(function() {
             "use strict";
